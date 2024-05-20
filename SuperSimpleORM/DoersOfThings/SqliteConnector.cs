@@ -26,6 +26,10 @@ public class SqliteConnector : IDbConnector
         }
 
         string primaryKeyName = string.Empty;
+        //I made this a Tuple because I thought I might want the column info down the line, but don't really need it
+        //But also I'm not refactoring it right now
+        //TODO Refactor it
+        //TODO Or add cool stuff that uses it
         Dictionary<string, Tuple<Column, PropertyInfo>> columns = new Dictionary<string, Tuple<Column, PropertyInfo>>();
         var properties = typeof(T).GetProperties();
 
@@ -62,7 +66,6 @@ public class SqliteConnector : IDbConnector
                 {
                     foreach (var column in columns)
                     {
-                        //TODO doing this check multiple times is no good
                         string value = string.Empty;
                         object? rawValue = reader.GetValue(column.Key);
                         if (rawValue is not DBNull) //Not great, will return "" instead of null for null fields
@@ -75,7 +78,6 @@ public class SqliteConnector : IDbConnector
         
         //TDOD Ummmm error handling I guess
         //Like, what if the thing can't be converted?
-        //What if it's null?
         //So many things
         T toReturn = new T();
         foreach (var result in dbResults)
