@@ -3,7 +3,7 @@ using SuperSimpleORM.Attributes;
 namespace SuperSimpleORM.DBStuff;
 
 [Table("main", "Foo")]
-public class FooTable
+public class FooEntity
 {
     [Column(true)]
     public long Id { get; set; }

@@ -22,7 +22,7 @@ Boolean that indicates the column is the primary key for the table. Please don't
 There's only one doer of things, really, the SqliteConnector. It implements GetById, which has to be manually defined. Lame. Oh and the DB has to be copied to the output directory. Fancy.
 
 ## Putting it all together
-So, create a class (in this case, FooTable (which really should have been FooEntity, maybe I'll fix that)) and give the class a Table attribute. Then give some properties some Column attributes.
+So, create a class (in this case, FooEntity and give the class a Table attribute. Then give some properties some Column attributes.
 In the main method, create an instance of the SqliteConnector, do a GetById\<FooTable\>(1) and you'll get back a FooTable object populated with values from the DB!
 
 But, like, don't try to do anything else. If you pass in ID 7, for instance, it'll break. It's very fragile.

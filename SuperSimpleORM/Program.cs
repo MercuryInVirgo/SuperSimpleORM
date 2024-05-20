@@ -9,7 +9,8 @@ class Program
     {
         Console.WriteLine("Hello, World!");
         SqliteConnector connector = new SqliteConnector();
-        FooTable result = connector.GetById<FooTable>(4);
+        BarEntity barEntity = connector.GetById<BarEntity>(2);
+        FooEntity result = connector.GetById<FooEntity>(4);
         return;
     }
 }
